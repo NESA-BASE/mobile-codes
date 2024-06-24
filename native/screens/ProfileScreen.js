@@ -8,16 +8,11 @@ const ProfileScreen = ({ navigation }) => {
 
   useEffect(() => {
     const fetchUserInfo = async () => {
-      const accessToken = await AsyncStorage.getItem("accessToken");
+      //const accessToken = await AsyncStorage.getItem("accessToken");
       const id = await AsyncStorage.getItem("id");
       try {
         const response = await axios.get(
-          `http://10.5.223.54:3000/v1/users/${id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          }
+          `http://jsonplaceholder.typicode.com/users/${id}`
         );
         setUserInfo(response.data);
       } catch (error) {
@@ -40,15 +35,17 @@ const ProfileScreen = ({ navigation }) => {
           source={{ uri: "https://avatar.iran.liara.run/public" }} // Placeholder for profile image
           style={styles.profileImage}
         />
-        <Text style={styles.title}>Profile</Text>
+        <Text style={styles.title}>{userInfo.username}</Text>
       </View>
       <View style={styles.profileInfo}>
-        <Text style={styles.infoLabel}>First Name:</Text>
-        <Text style={styles.infoText}>{userInfo.firstname}</Text>
-        <Text style={styles.infoLabel}>Last Name:</Text>
-        <Text style={styles.infoText}>{userInfo.lastname}</Text>
-        <Text style={styles.infoLabel}>Email:</Text>
+        <Text style={styles.infoLabel}>Name</Text>
+        <Text style={styles.infoText}>{userInfo.name}</Text>
+        <Text style={styles.infoLabel}>Phone</Text>
+        <Text style={styles.infoText}>{userInfo.phone}</Text>
+        <Text style={styles.infoLabel}>Email</Text>
         <Text style={styles.infoText}>{userInfo.email}</Text>
+        <Text style={styles.infoLabel}>Website</Text>
+        <Text style={styles.infoText}>{userInfo.website}</Text>
       </View>
       <View style={styles.logoutButton}>
         <Button title="Logout" onPress={logout} color="#d9534f" />

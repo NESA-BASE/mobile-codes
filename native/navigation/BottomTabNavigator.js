@@ -21,7 +21,8 @@ const BottomTabNavigator = () => {
             iconName = focused ? 'book' : 'book-outline';
           } else if (route.name === 'View Books') {
             iconName = focused ? 'list' : 'list-outline';
-          } else if (route.name === 'Profile'){
+          } 
+          else if (route.name === 'Profile'){
             iconName = focused ? 'person' : 'person-outline';
           }
 

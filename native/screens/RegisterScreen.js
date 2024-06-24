@@ -18,7 +18,7 @@ const RegisterScreen = ({ navigation }) => {
 
     try {
       const response = await axios.post(
-        "http://10.5.223.54:3000/v1/auth/register",
+        "http://10.5.220.210:3000/v1/auth/register",
         {
           firstname,
           lastname,
